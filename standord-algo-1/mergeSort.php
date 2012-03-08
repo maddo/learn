@@ -1,49 +1,28 @@
 <?php
 
-$a = array(10,3,11,2,7,8,4,12,9,5,1,6);
-
-echo "\nOriginal:\n";
-echo displayArray($a);
+$a = array(10,3,11,2,7,8,4,12,9,5,1,6,13);
 
 $sorted = mergeSort($a);
 
+echo "\nOriginal:\n";
+echo displayArray($a);
 echo "\nSorted:\n";
 echo displayArray($sorted);
-
 echo "\n";
-
-function displayArray($arr)
-{
-    $prettyArray = '';
-    $sep = '';
-    foreach ($arr as $a) {
-        $prettyArray .= $sep . $a;
-        $sep = ', ';
-    }
-
-    return $prettyArray;
-}
 
 function mergeSort($arr) 
 {
 
+    if (count($arr) < 2) {
+        return $arr;
+    }
+
     $size   = ceil(count($arr) / 2);
     $split  = array_chunk($arr, $size);
 
-    if (count($split[0]) > 1) {
-        $a = mergeSort($split[0]);
-    } 
-    else {
-        $a = $split[0];
-    }
+    $a = mergeSort($split[0]);
+    $b = mergeSort($split[1]);
 
-    if (count($split[1]) > 1) {
-        $b = mergeSort($split[1]);
-    } 
-    else {
-        $b = $split[1];
-    }
-    
     $i = 0;
     $k = 0;
     $iLimit = count($a);
@@ -79,4 +58,16 @@ function mergeSort($arr)
     }
 
     return $sorted;
+}
+
+function displayArray($arr)
+{
+    $prettyArray = '';
+    $sep = '';
+    foreach ($arr as $a) {
+        $prettyArray .= $sep . $a;
+        $sep = ', ';
+    }
+
+    return $prettyArray;
 }
