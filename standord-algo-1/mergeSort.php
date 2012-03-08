@@ -33,18 +33,14 @@ function mergeSort($arr)
     while ($i < $iLimit || $k < $kLimit) {
 
         if ($i >= $iLimit) {
-            for ($g = $k; $g < $kLimit; $g++) {
-                $sorted[] = $b[$g];
+            for ($k; $k < $kLimit; $k++) {
+                $sorted[] = $b[$k];
             }
-            break;
         } elseif ($k >= $kLimit) {
-            for ($g = $i; $g < $iLimit; $g++) {
-                $sorted[] = $a[$g];
+            for ($i; $i < $iLimit; $i++) {
+                $sorted[] = $a[$i];
             }
-            break;
-        }
-
-        if ( $a[$i] < $b[$k] ) {
+        } elseif ( $a[$i] < $b[$k] ) {
             if ($i < $iLimit) {
                 $sorted[] = $a[$i];
                 $i ++;
