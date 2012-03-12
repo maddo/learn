@@ -1,6 +1,6 @@
 <?php
 
-function mergeSort($arr)
+function mergesort($arr)
 {
     if (count($arr) < 2)
         return array($arr, 0);
@@ -8,10 +8,17 @@ function mergeSort($arr)
     $size   = ceil(count($arr) / 2);
     list($left, $right)  = array_chunk($arr, $size);
 
-    list($left, $l_inv)  = mergeSort($left);
-    list($right, $r_inv) = mergeSort($right);
+    list($left, $l_inv)  = mergesort($left);
+    list($right, $r_inv) = mergesort($right);
     $inv = $l_inv + $r_inv;
 
+    list($sorted, $inv) = merge($left, $right, $inv);
+
+    return array($sorted, $inv);
+}
+
+function merge($left, $right, $inv)
+{
     $iLimit = count($left);
     $kLimit = count($right);
     

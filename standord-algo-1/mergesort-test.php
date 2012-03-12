@@ -4,7 +4,7 @@ require_once 'mergesort.php';
 
 $a = array(10,3,11,2,7,8,4,12,9,5,1,6,13);
 
-list($sorted, $inv) = mergeSort($a);
+list($sorted, $inv) = mergesort($a);
 
 echo "\nOriginal:\n" . displayArray($a);
 echo "\nSorted:\n" . displayArray($sorted) . "\n";
