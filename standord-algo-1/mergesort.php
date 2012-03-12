@@ -33,6 +33,7 @@ function mergeSort($arr)
             $sorted[] = $left[$i];
             $i ++;
         } else {
+            // The magic for counting inversions
             $inv += $iLimit - $i;
             $sorted[] = $right[$k];
             $k ++;
